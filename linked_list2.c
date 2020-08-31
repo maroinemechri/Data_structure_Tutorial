@@ -121,7 +121,10 @@ void delete_list(LINKER header , int place)
 		if(i==place-1)
 		{
 			temp=trail->next;
+		        /*free the map location of deleted node */
+			printf("\n\n\n\n %c\n\n\n\n ",temp->data);
 			free(temp);
+			printf("\n\n\n\n %c\n\n\n\n ",trail->next->data);
 		}
 
 		if(i==place)
@@ -135,13 +138,49 @@ void delete_list(LINKER header , int place)
 		}
 
 		trail=trail->next;
-		
+		//free(temp);
 	}
 temp3->next=temp2;
 		
 
 }
+void delete_all_list(LINKER header)
+{
+	LINKER trail=header,temp,temp3,temp2,trail1;
+	int count=count_list_element(header);
+	if (header==NULL) 
+	{
+	printf("Error");
+	exit(1);
 
+	}
+	for (int i=0;i<count;i++)
+	{
+/*		if(i==place-1)
+		{
+			temp=trail->next
+			printf("\n\n\n\n %c\n\n\n\n ",temp->data);
+			free(temp);
+			printf("\n\n\n\n %c\n\n\n\n ",trail->next->data);
+		}
+
+		if(i==place)
+		{
+			temp2=trail->next;
+		}
+		if(i==place-2)
+		{
+
+			temp3=trail->next;
+		}
+*/
+		temp=trail;
+		trail=trail->next;
+		free(temp);
+		//free(temp);
+	}
+		
+}
 int main ()
 {
 char var='a';
@@ -167,12 +206,16 @@ LINKER sum=concatinate_str_str2(Str ,Str2);
 print_list(sum);
 char a1='M';
 int place1=3;
+int xc=4;
+int *p=&xc;
 insertion(sum,a1, place1);
 printf("************************************ ");
 print_list(sum);
 delete_list(sum, 3);
 printf("************************************ ");
 print_list(sum);
-
+//free(p);
+delete_all_list(sum);
+print_list(sum);
 return 0;
 }
