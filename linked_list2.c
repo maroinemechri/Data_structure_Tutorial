@@ -121,6 +121,7 @@ void delete_list(LINKER header , int place)
 		if(i==place-1)
 		{
 			temp=trail->next;
+			free(temp);
 		}
 
 		if(i==place)
